@@ -1,0 +1,32 @@
+{
+	"name": "__MSG_extName__",
+	"version": "1.0.0",
+	"manifest_version": 2,
+	"default_locale": "es",
+	"description": "__MSG_extDesc__",
+	"browser_action": {
+		"default_icon": {
+			"19": "assets/img/icon_19.png",
+			"38": "assets/img/icon_38.png"
+		},
+		"default_popup": "src/popup.html",
+		"default_title": "__MSG_extName__"
+	},
+	"permissions": ["tabs", "activeTab", "storage", "tts", "notifications", "webRequest", "downloads", "webRequestBlocking", "*://*.facebook.com/","*://*.dragonboundaimbot.com/*", "*://*.googleapis.com/*", "*://*.akamaihd.net/*"],
+	"background": {
+		"page": "src/index.html",
+		"persistent": true
+	},
+	"content_scripts": [{
+		"matches": ["*://*.facebook.com/*"],
+		"js": ["assets/js/angular.min.js", "assets/js/utils.js", "core/constants.js", "assets/js/init.js"],
+		"css": ["assets/css/default.css","assets/css/template.css"],
+		"run_at": "document_start"
+	}],
+	"web_accessible_resources": ["assets/*","resources/*"],
+	"content_security_policy": "script-src 'self' 'unsafe-eval'; object-src 'self'",
+	"icons": {
+		"128": "assets/img/icon_128.png"
+	},
+	"homepage_url": "https://www.facebook.com/wzvang"
+}
